@@ -9,12 +9,10 @@ function Home() {
 
     const fn = formData.get('firstname');
 
-    console.log('first name is -->', fn);
+    console.log('first name is -->', fn);  
   }
-
   let suresh = async ()=>{ //new style function define
  
-
   }
   // retuning something area
   return (
