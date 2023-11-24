@@ -1,4 +1,9 @@
 //1. import area
+//named import 
+import { PrismaClient } from '@prisma/client'
+import { showAlert } from './components/sweetAlert';
+// const object = new ClassObject
+const prisma = new PrismaClient()
 
 //2. defination area
 function Home() {
@@ -7,9 +12,23 @@ function Home() {
     "use server"
     console.log("hell Hello Hello", formData);
 
-    const fn = formData.get('firstname');
+    const firstname = formData.get('firstname');
 
-    console.log('first name is -->', fn);  
+    console.log('first name is -->', firstname);  
+    
+
+    //1. we can call API or Server Actions 
+    try {
+        const student = await prisma.students_tbl.create({
+          data: {
+            firstname:""+ firstname,
+          }
+        })
+        showAlert('Success', 'Post created successfully');
+    } catch (error) {
+        console.log(error);
+    }
+    
   }
   let suresh = async ()=>{ //new style function define
  
